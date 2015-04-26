@@ -1,42 +1,42 @@
 INSERT INTO gym VALUES
-	('Pewter City Gym', 1, 'Boulder Badge', 'Rock')
+	('Pewter City Gym', 1, 'Boulder Badge', 'Rock');
 INSERT INTO gym VALUES
-	('Cerulean City Gym', 2, 'Cascade Badge', 'Water')
+	('Cerulean City Gym', 2, 'Cascade Badge', 'Water');
 INSERT INTO gym VALUES
-	('Vermilion City Gym', 3, 'Thunder Badge', 'Electric')
+	('Vermilion City Gym', 3, 'Thunder Badge', 'Electric');
 INSERT INTO gym VALUES
-	('Celadon City Gym', 4, 'Rainbow Badge', 'Grass')
+	('Celadon City Gym', 4, 'Rainbow Badge', 'Grass');
 INSERT INTO gym VALUES
-	('Fuchsia City Gym', 5, 'Soul Badge', 'Poison')
+	('Fuchsia City Gym', 5, 'Soul Badge', 'Poison');
 INSERT INTO gym VALUES
-	('Saffron City Gym', 6, 'Marsh Badge', 'Psychic')
+	('Saffron City Gym', 6, 'Marsh Badge', 'Psychic');
 INSERT INTO gym VALUES
-	('Cinnabar Island Gym', 7, 'Volcano Badge', 'Fire')
+	('Cinnabar Island Gym', 7, 'Volcano Badge', 'Fire');
 INSERT INTO gym VALUES
-	('Viridian City Gym', 8, 'Earth Badge', 'Ground')
+	('Viridian City Gym', 8, 'Earth Badge', 'Ground');
 	
 INSERT INTO trainer_team VALUES
-	(1, 001, 001, 001, 001, 001, 002)
+	(1, 001, 001, 001, 001, 001, 002);
 INSERT INTO trainer_team VALUES
-	(2, 011, 011, 011, 011, 001)
+	(2, 011, 011, 011, 011, 001, null);
 INSERT INTO trainer_team VALUES
-	(3, 001, 002, 010, 016)
+	(3, 001, 002, 010, 016, null. null);
 INSERT INTO trainer_team VALUES
-	(4, 001, 002, 003, 011, 001, 012)
+	(4, 001, 002, 003, 011, 001, 012);
 	
 INSERT INTO trainer VALUES
-	(1, 'Pewter City', 'male', 'Brock', 1234567890)
+	(1, 'Pewter City', 'male', 'Brock', 1234567890);
 INSERT INTO trainer VALUES
-	(2, 'Cerulean City', 'female', 'Misty', 0987654321)
+	(2, 'Cerulean City', 'female', 'Misty', 0987654321);
 INSERT INTO trainer VALUES
-	(3, 'Vermilion City', 'male', 'Lt. Surge', 1236567890)
+	(3, 'Vermilion City', 'male', 'Lt. Surge', 1236567890);
 INSERT INTO trainer VALUES
-	(4, 'Celadon City', 'female', 'Erika', 2134567890)
+	(4, 'Celadon City', 'female', 'Erika', 2134567890);
 INSERT INTO trainer VALUES
-	(5, 'Fuchsia City', 'male', 'Koga', 1233567890)
+	(5, 'Fuchsia City', 'male', 'Koga', 1233567890);
 INSERT INTO trainer VALUES
-	(6, 'Saffron City', 'female', 'Sabrina', 1134567890)
+	(6, 'Saffron City', 'female', 'Sabrina', 1134567890);
 INSERT INTO trainer VALUES
-	(7, 'Cinnabar Island', 'male', 'Blaine', 1234568888)
+	(7, 'Cinnabar Island', 'male', 'Blaine', 1234568888);
 INSERT INTO trainer VALUES
-	(8, 'Viridian City', 'male', 'Giovanni', 1111567890)
+	(8, 'Viridian City', 'male', 'Giovanni', 1111567890);
