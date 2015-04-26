@@ -1,0 +1,1 @@
+This is where the ER Diagram, Full Schema, and and other photos for the project should be stored. 
