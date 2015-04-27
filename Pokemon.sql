@@ -52,11 +52,11 @@ CREATE TABLE trainer_team(
  
 CREATE TABLE gym (
 	name		varchar(25),
-leader_id	number(1),
-badge		varchar(25),
+        leader_id	number(1),
+        badge		varchar(25),
   	type 		varchar(25),
 	unique (badge),
 	unique(name),
-primary key (name),
-foreign key (leader) references trainer (id)
+        primary key (name),
+        foreign key (leader_id) references trainer (id)
 );

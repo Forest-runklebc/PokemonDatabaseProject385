@@ -1,49 +1,49 @@
 INSERT INTO pokemon VALUES
-	('Bulbasaur', 001, 'grass', NULL, NULL)
+	('Bulbasaur', 001, 'grass', NULL, NULL);
 INSERT INTO pokemon VALUES
-	('Ivysaur', 002, 'grass', NULL, NULL)
+	('Ivysaur', 002, 'grass', NULL, NULL);
 INSERT INTO pokemon VALUES
-	('Venusaur', 003, 'grass', NULL, NULL)
+	('Venusaur', 003, 'grass', NULL, NULL);
 INSERT INTO pokemon VALUES
-	('Caterpie', 010, 'bug', 'forest', 'Veridian Forest')
+	('Caterpie', 010, 'bug', 'forest', 'Veridian Forest');
 INSERT INTO pokemon VALUES
-	('Metapod', 011, 'bug', 'forest', 'Veridian Forest')
+	('Metapod', 011, 'bug', 'forest', 'Veridian Forest');
 INSERT INTO pokemon VALUES
-	('Butterfree', 012, 'bug', 'forest', 'Veridian Forest')
+	('Butterfree', 012, 'bug', 'forest', 'Veridian Forest');
 INSERT INTO pokemon VALUES
-	('Pidgey', 016, 'bug', 'forest', 'Route 1')
+	('Pidgey', 016, 'bug', 'forest', 'Route 1');
 
 
 INSERT INTO effectiveness VALUES
-	('normal', NULL, 'rock')
+	('normal', NULL, 'rock');
 INSERT INTO effectiveness VALUES
-	('fight', 'normal,rock,ice', 'flying,poison,bug,psychic')
+	('fight', 'normal,rock,ice', 'flying,poison,bug,psychic');
 INSERT INTO effectiveness VALUES
-	('flying', 'fight,bug,grass', 'rock,electric')
+	('flying', 'fight,bug,grass', 'rock,electric');
 INSERT INTO effectiveness VALUES
-	('poison', 'bug,grass', 'poison,ground,rock,ghost')
+	('poison', 'bug,grass', 'poison,ground,rock,ghost');
 INSERT INTO effectiveness VALUES
-	('ground', 'poison,rock,fire,electric', 'flying,bug,grass')
+	('ground', 'poison,rock,fire,electric', 'flying,bug,grass');
 INSERT INTO effectiveness VALUES
-	('rock', 'flying,bug,fire,ice', 'fight,ground')
+	('rock', 'flying,bug,fire,ice', 'fight,ground');
 INSERT INTO effectiveness VALUES
-	('bug', 'poison,grass,psychic', 'fight,flying,ghost,fire')
+	('bug', 'poison,grass,psychic', 'fight,flying,ghost,fire');
 INSERT INTO effectiveness VALUES
-	('ghost', 'ghost', 'normal,psychic')
+	('ghost', 'ghost', 'normal,psychic');
 INSERT INTO effectiveness VALUES
-	('fire', 'bug,grass,ice', 'rock,fire,water,dragon')
+	('fire', 'bug,grass,ice', 'rock,fire,water,dragon');
 INSERT INTO effectiveness VALUES
-	('water', 'ground,rock,fire', 'water,grass,dragon')
+	('water', 'ground,rock,fire', 'water,grass,dragon');
 INSERT INTO effectiveness VALUES
-	('grass', 'ground,rock,water', 'flying,poison,bug,fire,grass,dragon')
+	('grass', 'ground,rock,water', 'flying,poison,bug,fire,grass,dragon');
 INSERT INTO effectiveness VALUES
-	('electric', 'flying,water', 'ground,grass,electric,dragon')
+	('electric', 'flying,water', 'ground,grass,electric,dragon');
 INSERT INTO effectiveness VALUES
-	('psychic', 'fight,poison,', 'psychic')
+	('psychic', 'fight,poison,', 'psychic');
 INSERT INTO effectiveness VALUES
-	('ice', 'flying,ground,grass,dragon', 'water,ice')
+	('ice', 'flying,ground,grass,dragon', 'water,ice');
 INSERT INTO effectiveness VALUES
-	('dragon', 'dragon', NULL)
+	('dragon', 'dragon', NULL);
 
 INSERT INTO gym VALUES
 	('Pewter City Gym', 1, 'Boulder Badge', 'Rock');
@@ -67,7 +67,7 @@ INSERT INTO trainer_team VALUES
 INSERT INTO trainer_team VALUES
 	(2, 011, 011, 011, 011, 001, null);
 INSERT INTO trainer_team VALUES
-	(3, 001, 002, 010, 016, null. null);
+	(3, 001, 002, 010, 016, null, null);
 INSERT INTO trainer_team VALUES
 	(4, 001, 002, 003, 011, 001, 012);
 	
