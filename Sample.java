@@ -19,7 +19,7 @@ public class Sample
     try
     {
       // create a database connection
-      connection = DriverManager.getConnection("jdbc:sqlite:Pokemon1.1.sql");
+      connection = DriverManager.getConnection("jdbc:sqlite:Pokemon.db");
       Statement statement = connection.createStatement();
       statement.setQueryTimeout(30);  // set timeout to 30 sec.
 	
