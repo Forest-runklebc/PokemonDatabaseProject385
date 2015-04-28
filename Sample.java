@@ -23,6 +23,7 @@ public class Sample
       Statement statement = connection.createStatement();
       statement.setQueryTimeout(30);  // set timeout to 30 sec.
 	
+<<<<<<< HEAD
 		System.out.println("1. Count how many types are super effective against Fire");
 		System.out.println("2. Update trainer team 1 with Ivysaur and Venusaur");
 		System.out.println("3. Req 3...");
@@ -30,15 +31,27 @@ public class Sample
 		String ans = scan.next();
 		if(ans.equals("4")) {
       ResultSet rs = statement.executeQuery("SELECT name FROM pokemon");
+=======
+		System.out.println("Would you like to see a list of all Pokemon? (Yes/No)");
+		String yesNo = scan.next();
+		if(yesNo.toLowerCase().equals("yes")) {
+      ResultSet rs = statement.executeQuery("select base_type,strength from effectiveness where strength like '%fire%'");
+>>>>>>> b59c83c7351c639f0fc163af606e03337c7d5732
 		int count = 0;
+		
 	  while(rs.next())
       {
         // read the result set
+<<<<<<< HEAD
         System.out.println("Pokemon " + (count+1) + " is " + rs.getString("name"));
+=======
+        System.out.println("BaseType = " + rs.getString("base_type") + " - Stengths are " + rs.getString("strength"));
+>>>>>>> b59c83c7351c639f0fc163af606e03337c7d5732
 		count++;
       }
 	  }
 	  
+<<<<<<< HEAD
 	  else if(ans.equals("3")){
 		  
 	  }
@@ -58,6 +71,8 @@ public class Sample
 	  else{
 		  System.out.println("Not a valid option for prototype. Shutting down.");
 	  }
+=======
+>>>>>>> b59c83c7351c639f0fc163af606e03337c7d5732
 
     }
     catch(SQLException e)
