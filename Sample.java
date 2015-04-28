@@ -25,7 +25,7 @@ public class Sample
 	
 		System.out.println("1. Count how many types are super effective against Fire");
 		System.out.println("2. Update trainer team 1 with Ivysaur and Venusaur");
-		System.out.println("3. Req 3...");
+		System.out.println("3. Show all Pokemon Strengths and Weaknesses");
 		System.out.println("4. Show all Pokemon.");
 		String ans = scan.next();
 		if(ans.equals("4")) {
@@ -40,7 +40,19 @@ public class Sample
 	  }
 	  
 	  else if(ans.equals("3")){
-		  
+		  ResultSet rs = statement.executeQuery("SELECT name, strength, weakness " +
+		  "FROM pokemon as P join effectiveness as E on P.type = E.base_type;");
+		  String poke = "";
+		  String stren = "";
+		  String weak = "";
+	  while(rs.next())
+      {
+		  poke = rs.getString("name");
+		  stren = rs.getString("strength");
+		  weak = rs.getString("weakness");
+        System.out.println(poke + " is strong against " + stren + " and is " +
+		"weak against " + weak);
+      }
 	  }
 	  
 	  else if(ans.equals("2")){
