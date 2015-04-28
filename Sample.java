@@ -19,21 +19,24 @@ public class Sample
     try
     {
       // create a database connection
-      connection = DriverManager.getConnection("jdbc:sqlite:Pokemon.db");
+      connection = DriverManager.getConnection("jdbc:sqlite:PokeData.db");
       Statement statement = connection.createStatement();
       statement.setQueryTimeout(30);  // set timeout to 30 sec.
 	
 		System.out.println("Would you like to see a list of all Pokemon? (Yes/No)");
 		String yesNo = scan.next();
 		if(yesNo.toLowerCase().equals("yes")) {
-      ResultSet rs = statement.executeQuery("SELECT name FROM pokemon");
+      ResultSet rs = statement.executeQuery("select base_type,strength from effectiveness where strength like '%fire%'");
 		int count = 0;
+		
 	  while(rs.next())
       {
         // read the result set
-        System.out.println("Pokemon" + count + " is " + rs.getString("name"));
+        System.out.println("BaseType = " + rs.getString("base_type") + " - Stengths are " + rs.getString("strength"));
+		count++;
       }
 	  }
+	  
 
     }
     catch(SQLException e)
