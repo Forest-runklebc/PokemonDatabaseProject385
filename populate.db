@@ -12,6 +12,8 @@ INSERT INTO pokemon VALUES
 	('Butterfree', 012, 'bug', 'forest', 'Veridian Forest');
 INSERT INTO pokemon VALUES
 	('Pidgey', 016, 'bug', 'forest', 'Route 1');
+INSERT INTO pokemon VALUES
+	('Psyduck', 054, 'water', 'surf', 'Route 24');
 
 
 INSERT INTO effectiveness VALUES
@@ -70,6 +72,8 @@ INSERT INTO trainer_team VALUES
 	(3, 001, 002, 010, 016, null, null);
 INSERT INTO trainer_team VALUES
 	(4, 001, 002, 003, 011, 001, 012);
+INSERT INTO trainer_team VALUES
+	(69, 054, 054, 054, 054, 054, 054);
 	
 INSERT INTO trainer VALUES
 	(1, 'Pewter City', 'male', 'Brock', 1234567890);
@@ -87,3 +91,5 @@ INSERT INTO trainer VALUES
 	(7, 'Cinnabar Island', 'male', 'Blaine', 1234568888);
 INSERT INTO trainer VALUES
 	(8, 'Viridian City', 'male', 'Giovanni', 1111567890);
+INSERT INTO trainer VALUES
+	(69, 'Pallet Town', 'male', 'Thomas', 4199570197);
