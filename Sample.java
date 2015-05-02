@@ -70,6 +70,32 @@ public class Sample
 		  "\',\'" + gender + "\',\'" + name + "\'," + pNum + ")");
 		  statement.executeUpdate(entry);
 		  trainerID = "" + id;
+		  ArrayList<String> pIds = new ArrayList<>();
+		  String getPokes = "SELECT name, number FROM pokemon;";
+		  ResultSet rs = statement.executeQuery(getPokes);
+		  while(rs.next()){
+			  String pId = rs.getString("number");
+			  String pName = rs.getString("name");
+			  pIds.add(pId);
+			  System.out.println("ID: " + pId + "\nNAME: " + pName);
+			  System.out.println("----------------------------------");
+		  }
+		  boolean isValid = false;
+		  String fPId = "";
+		  do{
+			  System.out.println("And finally, you may choose your first pokemon!");
+			  fPId = scan.next();
+			  for(int i = 0; i < pIds.size(); i++){
+				  if(fPId.equals(pIds.get(i))){
+					  isValid = true;
+				  }
+			  }
+		  } while(!isValid);
+		  String empty = null;
+		  String giveFirstPman = new String("INSERT INTO trainer_team VALUES( \'" + 
+		  trainerID + "\',\'" + fPId + "\'," + empty + "," + 
+		  empty + "," + empty + "," + empty + "," + empty + ")");
+		  statement.executeUpdate(giveFirstPman);
 	  } else if(ans.equalsIgnoreCase("n")){
 		  ArrayList<String> ids = new ArrayList<>();
 		  String getTrainers = "SELECT name, id FROM trainer;";
