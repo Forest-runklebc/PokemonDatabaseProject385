@@ -40,7 +40,7 @@ public class Sample
 		  }
 		  String name = "";
 		  System.out.println("What it your name? MAX 25 CHARS");
-		  name = scan.nextLine();
+		  scan.nextLine();
 		  name = scan.nextLine();
 		  String pNum = "";
 		  do{
@@ -48,6 +48,27 @@ public class Sample
 			  "phone number: 10 DIGITS");
 			  pNum = scan.next();
 		  } while(pNum.length() > 10);
+		  String home = "";
+		  do{
+			  System.out.println("What is your Hometown? 25 CHARS");
+			  scan.nextLine();
+			  home = scan.nextLine();
+		  } while(home.length() > 25);
+		  System.out.println("Assigning ID...");
+		  boolean isAvailable = true;
+		  int id = 0;
+		  do{
+			  id++;
+			  isAvailable = true;
+			  String check = "SELECT id FROM trainer WHERE id = " + id;
+			  ResultSet rs = statement.executeQuery(check);
+			  while(rs.next()){
+				  isAvailable = false;
+			  }
+		  } while(!isAvailable);
+		  String entry = new String ("INSERT INTO trainer VALUES(" + id + ",\'" + home +
+		  "\',\'" + gender + "\',\'" + name + "\'," + pNum + ")");
+		  statement.executeUpdate(entry);
 	  }
 	  } while(!ans.equalsIgnoreCase("y") && !ans.equalsIgnoreCase("n"));
     }
