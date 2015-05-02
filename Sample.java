@@ -69,6 +69,31 @@ public class Sample
 		  String entry = new String ("INSERT INTO trainer VALUES(" + id + ",\'" + home +
 		  "\',\'" + gender + "\',\'" + name + "\'," + pNum + ")");
 		  statement.executeUpdate(entry);
+		  trainerID = "" + id;
+	  } else if(ans.equalsIgnoreCase("n")){
+		  ArrayList<String> ids = new ArrayList<>();
+		  String getTrainers = "SELECT name, id FROM trainer;";
+		  ResultSet rs = statement.executeQuery(getTrainers);
+		  while(rs.next()){
+			  String TId = rs.getString("id");
+			  String TName = rs.getString("name");
+			  ids.add(TId);
+			  System.out.println("ID: " + TId + "\nNAME: " + TName);
+			  System.out.println("----------------------------------");
+		  }
+		  boolean isValid = false;
+		  do{
+			System.out.println("Please choose from the list your Id.");
+			trainerID = scan.next();
+			for(int i = 0; i < ids.size(); i++){
+				String tmp = ids.get(i);
+				if(tmp.equals(trainerID)){
+					isValid = true;
+				}
+			}
+		  } while(!isValid);
+	  } else{
+		  
 	  }
 	  } while(!ans.equalsIgnoreCase("y") && !ans.equalsIgnoreCase("n"));
     }
