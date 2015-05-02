@@ -96,6 +96,7 @@ public class Sample
 		  trainerID + "\',\'" + fPId + "\'," + empty + "," + 
 		  empty + "," + empty + "," + empty + "," + empty + ")");
 		  statement.executeUpdate(giveFirstPman);
+		  System.out.println("Congrats! You are in the system!");
 	  } else if(ans.equalsIgnoreCase("n")){
 		  ArrayList<String> ids = new ArrayList<>();
 		  String getTrainers = "SELECT name, id FROM trainer;";
@@ -122,6 +123,17 @@ public class Sample
 		  
 	  }
 	  } while(!ans.equalsIgnoreCase("y") && !ans.equalsIgnoreCase("n"));
+	  //Here we will go through and load their pokemon Ids into a list.
+	  ArrayList<String> trainerPoke = new ArrayList<>();
+	  String getUserP = "SELECT p1_id, p2_id, p3_id, p4_id, p5_id, " + 
+	  "p6_id FROM trainer_team WHERE trainer_id = " + trainerID;
+	  ResultSet rs = statement.executeQuery(getUserP);
+	  trainerPoke.add(rs.getString("p1_id"));
+	  trainerPoke.add(rs.getString("p2_id"));
+	  trainerPoke.add(rs.getString("p3_id"));
+	  trainerPoke.add(rs.getString("p4_id"));
+	  trainerPoke.add(rs.getString("p5_id"));
+	  trainerPoke.add(rs.getString("p6_id"));
     }
     catch(SQLException e)
     {
