@@ -134,6 +134,43 @@ public class Sample
 	  trainerPoke.add(rs.getString("p4_id"));
 	  trainerPoke.add(rs.getString("p5_id"));
 	  trainerPoke.add(rs.getString("p6_id"));
+	  
+	  System.out.println("Your pokemon are the following... ");
+	  for(int i = 0; i < 6; i++){
+		  String tmp = trainerPoke.get(i);
+		  if(tmp != null){
+			  String getPokemon = "SELECT name FROM pokemon WHERE number = " + tmp;
+			  ResultSet rs1 = statement.executeQuery(getPokemon);
+			  System.out.println((i + 1) + ". " + rs.getString("name"));
+		  }
+	  }
+	  //Done loading and listing pokemon, begin prompting user about group analysis.
+	  String ans0 = "";
+	  do{
+		  System.out.println("What would you like to do? (1-)");
+		  System.out.println("1. Add a Pokemon");
+		  System.out.println("2. Remove a Pokemon");
+		  System.out.println("3. Analyze group strengths/weaknesses");
+		  System.out.println("4. Look at Gym Pokemon");
+		  System.out.println("5. Exit");
+		  ans0 = scan.next();
+		  
+		  //May have difficult time deleting pokemon, and moving all of them 
+		  //down a slot if not from the right most non null attribute. 
+		  
+		  if(ans0.equals("1")){
+			  if(trainerPoke.get(5) != null){
+				  System.out.println("You already have the mex amount of Pokemon!");
+			  }
+			  
+		  } else if(ans0.equals("2")){
+			  
+		  } else if(ans0.equals("3")){
+			  
+		  } else if(ans0.equals("4")){
+			  
+		  }
+	  } while(!ans0.equals("5"));
     }
     catch(SQLException e)
     {
