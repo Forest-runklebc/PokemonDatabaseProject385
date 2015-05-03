@@ -158,6 +158,9 @@ public class Sample
 		  String reply = "";
 		  boolean works = true;
 		  int marker = 0;
+		  String command = "";
+		  String sstmp = "";
+		  String sstmp0 = "";
 		  //May have difficult time deleting pokemon, and moving all of them 
 		  //down a slot if not from the right most non null attribute. 
 		  
@@ -189,14 +192,52 @@ public class Sample
 				if(trainerPoke.get(marker-1) == null){
 					System.out.println("There is no pokemon at this location.");
 				} else {
-					System.out.println("K.");
+					System.out.println("Removing Pokemon...");
+					command = "DELETE FROM trainer_team WHERE trainer_id = " + 
+					trainerID + " AND p" + (marker) + "_id = " + trainerPoke.get(marker-1);
+					statement.executeUpdate(command);
+					trainerPoke.set(marker-1, null);
+					int stmp = marker-1;
+					//This part checks if we need to move the values down in AL and SQL
+					if(stmp < 5){
+						while(true){
+							if(stmp == 5){
+								break;
+							} else if(trainerPoke.get(stmp+1) == null){
+								break;
+							} else{
+								trainerPoke.set(stmp, trainerPoke.get(stmp+1));
+								trainerPoke.set((stmp + 1), null);
+							}
+						}
+						//First if case tests to see if it needs to delete or not.
+						//Second updates SQL with array list.
+						for(int i = 0; i < 6; i++){
+							if(trainerPoke.get(i) == null){
+								command = "SELECT p" + (i+1) + "_id FROM trainer_team " + 
+								"WHERE trainer_id = " + trainerID;
+								rst = statement.executeQuery(command);
+								sstmp0 = "p" + (i+1) + "_id";
+								sstmp = rst.getString(sstmp0);
+								rst.close();
+								if(sstmp != null){
+									command = "DELETE FROM trainer_team WHERE p" + 
+									(i+1) + "_id != NULL AND trainer_id = " + trainerID;
+									statement.executeUpdate(command);
+								}
+							} else{
+								//update linearly.
+							}
+						}
+					}
+				
 				}
 		  } else if(ans0.equals("3")){
 			  //ResultSet rst = null;
 			  String names = "";
 			  String str = "";
 			  String weakn = "";
-			  for(int i = 0; i < 6; i++){
+			  for(int i = 0; i < trainerPoke.size(); i++){
 				if(trainerPoke.get(i) != null){
 					String q1 = "SELECT name, strength, weakness FROM pokemon as P " + 
 						"JOIN effectiveness as E on P.type = E.base_type WHERE number = " + 
