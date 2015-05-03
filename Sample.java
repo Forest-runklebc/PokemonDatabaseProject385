@@ -147,7 +147,7 @@ public class Sample
 	  //Done loading and listing pokemon, begin prompting user about group analysis.
 	  String ans0 = "";
 	  do{
-		  System.out.println("What would you like to do? (1-)");
+		  System.out.println("What would you like to do? (1-5)");
 		  System.out.println("1. Add a Pokemon");
 		  System.out.println("2. Remove a Pokemon");
 		  System.out.println("3. Analyze group strengths/weaknesses");
@@ -166,7 +166,24 @@ public class Sample
 		  } else if(ans0.equals("2")){
 			  
 		  } else if(ans0.equals("3")){
-			  
+			  ResultSet rst = null;
+			  String names = "";
+			  String str = "";
+			  String weakn = "";
+			  for(int i = 0; i < 6; i++){
+				if(trainerPoke.get(i) != null){
+					String q1 = "SELECT name, strength, weakness FROM pokemon as P " + 
+						"JOIN effectiveness as E on P.type = E.base_type WHERE number = " + 
+						trainerPoke.get(i) + "";
+					rst = statement.executeQuery(q1);
+					names = rst.getString("name");
+					str = rst.getString("strength");
+					weakn = rst.getString("weakness");
+					System.out.println((i + 1) + ". " + names + " is strong against " + 
+					str + " and weak against " + weakn + ".");
+				rst.close();
+				}
+			  }
 		  } else if(ans0.equals("4")){
 			  
 		  }
