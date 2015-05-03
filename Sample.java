@@ -154,7 +154,10 @@ public class Sample
 		  System.out.println("4. Look at Gym Pokemon");
 		  System.out.println("5. Exit");
 		  ans0 = scan.next();
-		  
+		  ResultSet rst = null;
+		  String reply = "";
+		  boolean works = true;
+		  int marker = 0;
 		  //May have difficult time deleting pokemon, and moving all of them 
 		  //down a slot if not from the right most non null attribute. 
 		  
@@ -164,9 +167,32 @@ public class Sample
 			  }
 			  
 		  } else if(ans0.equals("2")){
-			  
+			   for(int i = 0; i < 6; i++){
+					String tmp = trainerPoke.get(i);
+					if(tmp != null){
+						String getPokemon = "SELECT name FROM pokemon WHERE number = " + tmp;
+						rst = statement.executeQuery(getPokemon);
+						System.out.println((i + 1) + ". " + rs.getString("name"));
+						rst.close();
+					}
+				}
+				do{
+					System.out.println("Which do you want to remove?");
+					reply = scan.next();
+					works = false;
+					if(reply.equals("1") || reply.equals("2") || reply.equals("3") ||
+						reply.equals("4") || reply.equals("5") || reply.equals("6")){
+							works = true;
+							marker = Integer.parseInt(reply);
+						}
+				} while(!works);
+				if(trainerPoke.get(marker-1) == null){
+					System.out.println("There is no pokemon at this location.");
+				} else {
+					System.out.println("K.");
+				}
 		  } else if(ans0.equals("3")){
-			  ResultSet rst = null;
+			  //ResultSet rst = null;
 			  String names = "";
 			  String str = "";
 			  String weakn = "";
