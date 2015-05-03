@@ -193,8 +193,8 @@ public class Sample
 					System.out.println("There is no pokemon at this location.");
 				} else {
 					System.out.println("Removing Pokemon...");
-					command = "DELETE FROM trainer_team WHERE trainer_id = " + 
-					trainerID + " AND p" + (marker) + "_id = " + trainerPoke.get(marker-1);
+					command = "UPDATE trainer_team SET p" + marker + "_id = NULL WHERE " +
+					"trainer_id = " + trainerID;
 					statement.executeUpdate(command);
 					trainerPoke.set(marker-1, null);
 					int stmp = marker-1;
@@ -209,6 +209,7 @@ public class Sample
 								trainerPoke.set(stmp, trainerPoke.get(stmp+1));
 								trainerPoke.set((stmp + 1), null);
 							}
+							stmp++;
 						}
 						//First if case tests to see if it needs to delete or not.
 						//Second updates SQL with array list.
@@ -221,12 +222,14 @@ public class Sample
 								sstmp = rst.getString(sstmp0);
 								rst.close();
 								if(sstmp != null){
-									command = "DELETE FROM trainer_team WHERE p" + 
-									(i+1) + "_id != NULL AND trainer_id = " + trainerID;
+									command = "UPDATE trainer_team SET p" + (i+1) +
+									"_id = NULL WHERE trainer_id = " + trainerID;
 									statement.executeUpdate(command);
 								}
 							} else{
-								//update linearly.
+								command = "UPDATE trainer_team SET p" + (i+1) + "_id = " +
+								trainerPoke.get(i) + " WHERE trainer_id = " + trainerID;
+								statement.executeUpdate(command);
 							}
 						}
 					}
