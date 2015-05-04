@@ -151,7 +151,7 @@ public class Sample
 		  System.out.println("1. Add a Pokemon");
 		  System.out.println("2. Remove a Pokemon");
 		  System.out.println("3. Analyze group strengths/weaknesses");
-		  System.out.println("4. Look at Gym Pokemon");
+		  System.out.println("4. Look at Gym Specifics.");
 		  System.out.println("5. Exit");
 		  ans0 = scan.next();
 		  ResultSet rst = null;
@@ -178,7 +178,7 @@ public class Sample
 			  	}
 			  	System.out.println("Place ID of Pokemon you want to add: ");
 			  	reply = scan.next();
-			  	System.out.println(reply);
+			  	//System.out.println(reply);
 			  	marker = 0;
 			  	while(true){
 			  		if(trainerPoke.get(marker) == null){
@@ -186,10 +186,10 @@ public class Sample
 			  		}
 			  		marker++;
 			  	}
-			  	System.out.println(marker);
+			  	//System.out.println(marker);
 			  	command = "UPDATE trainer_team SET p" + (marker+1) + "_id = " + reply
 			  	+ " WHERE trainer_id = " + trainerID;
-			  	System.out.println(command);
+			  	//System.out.println(command);
 			  	try{
 			  		statement.executeUpdate(command);
 			  		trainerPoke.set(marker, reply);
@@ -278,13 +278,28 @@ public class Sample
 					names = rst.getString("name");
 					str = rst.getString("strength");
 					weakn = rst.getString("weakness");
-					System.out.println((i + 1) + ". " + names + " is strong against " + 
-					str + " and weak against " + weakn + ".");
+					System.out.println((i+1) + ". " + names + ":");
+				  	System.out.println("Good against: " + str);
+				  	System.out.println("Weak against: " + weakn);
+				  	System.out.println("-------------------------------------------");
 				rst.close();
 				}
 			  }
 		  } else if(ans0.equals("4")){
-			  
+			  command = "SELECT badge, strength, weakness FROM gym as G join " + 
+			  "effectiveness as E on G.type = E.base_type COLLATE NOCASE";
+			  rst = statement.executeQuery(command);
+			  String badge = "";
+			  while(rst.next()){
+			  	badge = rst.getString("badge");
+			  	sstmp = rst.getString("strength");
+			  	sstmp0 = rst.getString("weakness");
+			  	System.out.println(badge + ":");
+			  	System.out.println("Avoid: " + sstmp);
+			  	System.out.println("Use: " + sstmp0);
+			  	System.out.println("-------------------------------------------");
+
+			  }
 		  }
 	  } while(!ans0.equals("5"));
     }
