@@ -163,9 +163,24 @@ public class Sample
 				System.out.println("Where can it be found?");
 				loca = scan.nextLine();
 				theType = theType.toLowerCase();
+				if(enviro.equals("")){
+					enviro = "NULL";
+				}
+				if(loca.equals("")){
+					loca = "NULL";
+				}
 				theCommand = "INSERT INTO pokemon VALUES(\'" + mon + "\'," + theID + 
 					",\'" + theType + "\',\'" + enviro + "\',\'" + loca + "\')";
-				statement.executeUpdate(theCommand);
+				String anss = "";
+				System.out.println("Does the following look correct?(y/n)\n" + theCommand);
+				anss = scan.next();
+				if(anss.equalsIgnoreCase("y")){
+					try{
+					statement.executeUpdate(theCommand);
+					} catch(Exception e){
+						System.out.println("Pokemon either already in DB or invalid.");
+					}
+				}
 			} 
 		} while(!theMove.equals("3"));
 		  
