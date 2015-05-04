@@ -166,7 +166,36 @@ public class Sample
 		  
 		  if(ans0.equals("1")){
 			  if(trainerPoke.get(5) != null){
-				  System.out.println("You already have the mex amount of Pokemon!");
+				  System.out.println("You already have the max amount of Pokemon!");
+			  } else {
+			  	command = "SELECT name, number FROM pokemon;";
+			  	rst = statement.executeQuery(command);
+			  	while(rst.next()){
+					sstmp = rs.getString("number");
+			  		sstmp0 = rs.getString("name");
+			  		System.out.println("ID: " + sstmp + "\nNAME: " + sstmp0);
+			  		System.out.println("----------------------------------");
+			  	}
+			  	System.out.println("Place ID of Pokemon you want to add: ");
+			  	reply = scan.next();
+			  	System.out.println(reply);
+			  	marker = 0;
+			  	while(true){
+			  		if(trainerPoke.get(marker) == null){
+			  			break;
+			  		}
+			  		marker++;
+			  	}
+			  	System.out.println(marker);
+			  	command = "UPDATE trainer_team SET p" + (marker+1) + "_id = " + reply
+			  	+ " WHERE trainer_id = " + trainerID;
+			  	System.out.println(command);
+			  	try{
+			  		statement.executeUpdate(command);
+			  		trainerPoke.set(marker, reply);
+			  	} catch(Exception e){
+			  		System.out.println("Invalid ID");
+			  	}
 			  }
 			  
 		  } else if(ans0.equals("2")){
