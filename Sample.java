@@ -119,9 +119,57 @@ public class Sample
 				}
 			}
 		  } while(!isValid);
-	  } else{
+	  } else if(ans.equalsIgnoreCase("admin")){
+	  	String user = "";
+	  	String password = "";
+	  	do{
+	  	System.out.print("USER NAME: ");
+	  	user = scan.next();
+	  	System.out.print("PASSWORD: ");
+	  	password = scan.next();
+	  	if(!user.equalsIgnoreCase("user") || !password.equalsIgnoreCase("password")){
+	  		System.out.println("INCORRECT");
+	  	}
+		} while(!user.equalsIgnoreCase("user") || !password.equalsIgnoreCase("password"));
+		System.out.println("WELCOME ADMIN");
+		String theMove = "";
+		do{
+			String theCommand = "";
+			ResultSet rst0 = null;
+			System.out.println("1. Get Pokemon Count");
+			System.out.println("2. Add Pokemon");
+			System.out.println("3. Exit");
+			theMove = scan.next();
+			if(theMove.equals("1")){
+				theCommand = "SELECT count(*) from pokemon";
+				rst0 = statement.executeQuery(theCommand);
+				System.out.println("There are " + rst0.getString("count(*)") + " pokemon");
+			}  
+			if(theMove.equals("2")){
+				String mon = "";
+				String theID = "";
+				String theType = "";
+				String enviro = "";
+				String loca = "";
+				System.out.println("What is the name of the Pokemon?");
+				mon = scan.next();
+				System.out.println("What is its numerical ID?");
+				theID = scan.next();
+				System.out.println("What type is it? (ONLY ENTER BASE)");
+				theType = scan.next();
+				System.out.println("What is its primary enviroment?");
+				scan.nextLine();
+				enviro = scan.nextLine();
+				System.out.println("Where can it be found?");
+				loca = scan.nextLine();
+				theType = theType.toLowerCase();
+				theCommand = "INSERT INTO pokemon VALUES(\'" + mon + "\'," + theID + 
+					",\'" + theType + "\',\'" + enviro + "\',\'" + loca + "\')";
+				statement.executeUpdate(theCommand);
+			} 
+		} while(!theMove.equals("3"));
 		  
-	  }
+	  } else{}
 	  } while(!ans.equalsIgnoreCase("y") && !ans.equalsIgnoreCase("n"));
 	  //Here we will go through and load their pokemon Ids into a list.
 	  ArrayList<String> trainerPoke = new ArrayList<>();
@@ -168,7 +216,7 @@ public class Sample
 			  if(trainerPoke.get(5) != null){
 				  System.out.println("You already have the max amount of Pokemon!");
 			  } else {
-			  	command = "SELECT name, number FROM pokemon;";
+			  	command = "SELECT name, number FROM pokemon ORDER BY number;";
 			  	rst = statement.executeQuery(command);
 			  	while(rst.next()){
 					sstmp = rs.getString("number");
@@ -212,10 +260,13 @@ public class Sample
 					System.out.println("Which do you want to remove?");
 					reply = scan.next();
 					works = false;
-					if(reply.equals("1") || reply.equals("2") || reply.equals("3") ||
+					if(reply.equals("2") || reply.equals("3") ||
 						reply.equals("4") || reply.equals("5") || reply.equals("6")){
 							works = true;
 							marker = Integer.parseInt(reply);
+						}
+						if(reply.equals("1")){
+							System.out.println("You cannot get rid of your first pokemon.");
 						}
 				} while(!works);
 				if(trainerPoke.get(marker-1) == null){
@@ -278,6 +329,12 @@ public class Sample
 					names = rst.getString("name");
 					str = rst.getString("strength");
 					weakn = rst.getString("weakness");
+					if(str == null){
+						str = "Nothing";
+					}
+					if(weakn == null){
+						weakn = "Nothing";
+					}
 					System.out.println((i+1) + ". " + names + ":");
 				  	System.out.println("Good against: " + str);
 				  	System.out.println("Weak against: " + weakn);
