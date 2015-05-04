@@ -1,0 +1,1 @@
+UPDATE effectiveness SET weakness='fight,ground,water' WHERE base_type='rock';
