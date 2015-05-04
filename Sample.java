@@ -165,12 +165,16 @@ public class Sample
               theType = theType.toLowerCase();
               if(enviro.equals("")){
                 enviro = "NULL";
+              } else{
+                enviro = "\'" + enviro + "\'";
               }
               if(loca.equals("")){
                 loca = "NULL";
+              } else {
+                loca = "\'" + loca + "\'";
               }
               theCommand = "INSERT INTO pokemon VALUES(\'" + mon + "\'," + theID + 
-                ",\'" + theType + "\',\'" + enviro + "\',\'" + loca + "\')";
+                ",\'" + theType + "\'," + enviro + "," + loca + ")";
               String anss = "";
               System.out.println("Does the following look correct?(y/n)\n" + theCommand);
               anss = scan.next();
