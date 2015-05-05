@@ -12,7 +12,7 @@ public class Sample
     // load the sqlite-JDBC driver using the current class loader
     Class.forName("org.sqlite.JDBC");
     Scanner scan = new Scanner(System.in);
-    System.out.println("Welcome to the Pokedex!\nWe have information about:\nPokemon\nPokemon vs Pokemon type effectiveness\nTrainers\nTrainer Teams\nGyms");
+    //System.out.println("Welcome to the Pokedex!\nWe have information about:\nPokemon\nPokemon vs Pokemon type effectiveness\nTrainers\nTrainer Teams\nGyms");
 
 
     Connection connection = null;
@@ -71,7 +71,7 @@ public class Sample
           statement.executeUpdate(entry);
           trainerID = "" + id;
           ArrayList<String> pIds = new ArrayList<>();
-          String getPokes = "SELECT name, number FROM pokemon;";
+          String getPokes = "SELECT name, number FROM pokemon ORDER BY number;";
           ResultSet rs = statement.executeQuery(getPokes);
           while(rs.next()){
             String pId = rs.getString("number");
